@@ -1,4 +1,3 @@
-import { Spinner } from "@material-tailwind/react";
 import { lazy, Suspense } from "react";
 
 const loadable = (
@@ -33,7 +32,7 @@ const Loading = ({
       }}
     >
       {text && <p>{text}</p>}
-      <Spinner />
+      <h1>Loading</h1>
     </div>
   );
 };
