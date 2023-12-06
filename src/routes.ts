@@ -1,7 +1,7 @@
 import React, { ComponentType } from "react";
 import loadable from "./utils/loadable";
+import StepOne from "./components/Steps/StepOne";
 
-const NavbarSimple = loadable(() => import("./pages/Navbar/index"));
 const LandingPage = loadable(() => import("./pages"));
 
 export interface Routing {
@@ -12,7 +12,7 @@ export interface Routing {
 
 export const PublicRoutes: Routing[] = [
   { path: "/", component: LandingPage },
-  { path: "/nav", component: NavbarSimple },
+  { path: "/nav", component: StepOne },
   //   { path: "/register/:username/:plan?", component: () => <Register /> },
   //   { path: "/checkin/:boothId", component: () => <EventCheckForm /> },
   //   { path: "/direct/:user", component: () => <DirectLandingPage /> },
