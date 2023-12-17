@@ -1,4 +1,18 @@
+import { useEffect, useState } from "react";
+import { useContentFullHook } from "../../utils/contentfullHook";
+
+interface Header {
+  title: string;
+  subtitle: string;
+}
+
 export default function StepOne() {
+  const [header, setHeader] = useState<Header>({ title: "", subtitle: "" });
+  const { getHeader } = useContentFullHook();
+
+  useEffect(() => {
+    getHeader().then((res: any) => setHeader(res?.[0]));
+  }, []);
   return (
     <div className='relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75'>
       <div
@@ -15,12 +29,10 @@ export default function StepOne() {
           <div className='w-full lg:w-6/12 px-4 ml-auto mr-auto text-center'>
             <div className='pr-12'>
               <h1 className='text-white font-semibold text-5xl'>
-                Our story starts with you.
+                {header.title}
               </h1>
               <p className='mt-4 text-lg text-blueGray-200'>
-                This is a simple example of a Landing Page you can build using
-                Notus React. It features multiple CSS components based on the
-                Tailwind CSS design system.
+                {header.subtitle}
               </p>
             </div>
           </div>
