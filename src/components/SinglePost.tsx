@@ -3,9 +3,10 @@ import { useContentFullHook } from "../utils/contentfullHook";
 import { useParams } from "react-router-dom";
 
 interface PostType {
+  featured_image: string;
+  slug: string;
   title: string;
   description: string;
-  slug: string;
 }
 
 export default function SinglePost() {
@@ -14,6 +15,7 @@ export default function SinglePost() {
     title: "",
     description: "",
     slug: "",
+    featured_image: "",
   });
   const { getPost } = useContentFullHook();
 
@@ -33,7 +35,7 @@ export default function SinglePost() {
         </div>
         {/* Featured image */}
         <img
-          src='https://images.unsplash.com/photo-1493723843671-1d655e66ac1c'
+          src={post.featured_image}
           alt='Featured image'
           className='w-full h-auto mb-8'
         />
