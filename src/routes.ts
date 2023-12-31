@@ -12,5 +12,5 @@ export interface Routing {
 
 export const PublicRoutes: Routing[] = [
   { path: "/", component: MainPage },
-  { path: "/single", component: SinglePost },
+  { path: "/:slug/:id", component: SinglePost },
 ];

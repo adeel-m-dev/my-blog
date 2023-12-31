@@ -26,9 +26,8 @@ function App() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  const paths = ["/", "/single", "/about", "/contact", "/terms", "/privacy"];
-
-  if (!paths.includes(location)) return <h1>NOT FOUND</h1>;
+  // const paths = ["/", "/:slug/:id", "/about", "/contact", "/terms", "/privacy"];
+  // if (!paths.includes(location)) return <h1>NOT FOUND</h1>;
 
   return (
     <div className='dark:bg-gray-900 dark:text-white'>

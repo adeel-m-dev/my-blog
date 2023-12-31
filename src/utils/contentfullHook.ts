@@ -38,6 +38,8 @@ export const useContentFullHook = () => {
           title: item.fields.title,
           slug: item.fields.slug,
           featured_image: item.fields?.featured_image?.fields?.file?.url,
+          description: item.fields?.content?.content[0]?.content[0]?.value,
+          id: item.sys.id,
         };
       });
       return sanitizedResponse;
@@ -46,5 +48,20 @@ export const useContentFullHook = () => {
     }
   };
 
-  return { getPosts, getHeader };
+  const getPost = async (id: string) => {
+    try {
+      const response: any = await client.getEntry(id);
+      const sanitizedResponse = {
+        title: response?.fields?.title,
+        slug: response?.fields?.slug,
+        featured_image: response?.fields?.featured_image?.fields?.file?.url,
+        description: response?.fields?.content?.content[0]?.content[0]?.value,
+      };
+      return sanitizedResponse;
+    } catch (error) {
+      return error;
+    }
+  };
+
+  return { getPosts, getHeader, getPost };
 };
