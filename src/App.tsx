@@ -1,4 +1,4 @@
-import { Routes, useLocation } from "react-router-dom";
+import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 
 import { PublicRoutes } from "./routes";
@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 // import { useEffect, useState } from "react";
 
 function App() {
-  const location = useLocation().pathname;
+  // const location = useLocation().pathname;
   const [theme, setTheme] = useState<string>(localStorage.getItem("theme")!);
 
   useEffect(() => {
