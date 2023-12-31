@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function MainPage() {
-  const Posts = [...Array(10)].map((item, index) => {
+  const Posts = [...Array(10)].map((_, index) => {
     return (
       <Link
         to='/single'
