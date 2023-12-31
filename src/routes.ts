@@ -1,8 +1,8 @@
 import React, { ComponentType } from "react";
 import loadable from "./utils/loadable";
-import StepOne from "./components/Steps/StepOne";
 
-const LandingPage = loadable(() => import("./pages"));
+const MainPage = loadable(() => import("./components/MainPage"));
+const SinglePost = loadable(() => import("./components/SinglePost"));
 
 export interface Routing {
   path: string;
@@ -11,12 +11,6 @@ export interface Routing {
 }
 
 export const PublicRoutes: Routing[] = [
-  { path: "/", component: LandingPage },
-  { path: "/nav", component: StepOne },
-  //   { path: "/register/:username/:plan?", component: () => <Register /> },
-  //   { path: "/checkin/:boothId", component: () => <EventCheckForm /> },
-  //   { path: "/direct/:user", component: () => <DirectLandingPage /> },
-  //   { path: "/public/store", component: () => <ECommerceStoreContainer /> },
-  //   { path: "/public/p/:slug", component: () => <PublicPageViewContainer /> },
-  //   { path: "/event/:slug/:user", component: () => <GuestEventRegistration /> },
+  { path: "/", component: MainPage },
+  { path: "/single", component: SinglePost },
 ];
