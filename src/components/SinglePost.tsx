@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useContentFullHook } from "../utils/contentfullHook";
 import { useParams } from "react-router-dom";
+import Spinner from "./Spinner";
 
 interface PostType {
   featured_image: string;
@@ -17,11 +18,20 @@ export default function SinglePost() {
     slug: "",
     featured_image: "",
   });
+
+  const [loading, setLoading] = useState(false);
+
   const { getPost } = useContentFullHook();
 
   useEffect(() => {
-    getPost(id!).then((res) => setPost(res as PostType));
+    setLoading(true);
+    getPost(id!).then((res) => {
+      setPost(res as PostType);
+      setLoading(false);
+    });
   }, [id]);
+
+  if (loading) return <Spinner />;
 
   return (
     <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12'>
