@@ -28,7 +28,7 @@ export default function MainPage() {
     return posts.map((item, index) => {
       return (
         <Link
-          to={`/post/${item.slug}/${item.id}`}
+          to={`/${item.slug}/${item.id}`}
           key={index}
           className='flex flex-col bg-white border border-gray-200 rounded-lg shadow lg:flex-row lg:max-w-xl hover:bg-gray-100 hover:shadow-blue-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'
         >
