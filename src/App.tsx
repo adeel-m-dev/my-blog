@@ -1,15 +1,11 @@
-import { Routes } from "react-router-dom";
-import { Route } from "react-router-dom";
-
-import { PublicRoutes } from "./routes";
 import AuthNavbar from "./components/AuthNavbar";
 import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
-// import { useContentFullHook } from "./utils/contentfullHook";
-// import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import MainPage from "./components/MainPage";
+import SinglePost from "./components/SinglePost";
 
 function App() {
-  // const location = useLocation().pathname;
   const [theme, setTheme] = useState<string>(localStorage.getItem("theme")!);
 
   useEffect(() => {
@@ -26,16 +22,12 @@ function App() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  // const paths = ["/", "/:slug/:id", "/about", "/contact", "/terms", "/privacy"];
-  // if (!paths.includes(location)) return <h1>NOT FOUND</h1>;
-
   return (
     <div className='dark:bg-gray-900 dark:text-white'>
       <AuthNavbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
       <Routes>
-        {PublicRoutes.map((route, key) => (
-          <Route key={key} path={route.path} element={<route.component />} />
-        ))}
+        <Route path='/' element={<MainPage />} />
+        <Route path='/:slug/:id' element={<SinglePost />} />
       </Routes>
       <Footer />
     </div>
