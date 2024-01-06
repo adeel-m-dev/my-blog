@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
 import MainPage from "./components/MainPage";
 import SinglePost from "./components/SinglePost";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [theme, setTheme] = useState<string>(localStorage.getItem("theme")!);
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path='/:slug/:id' element={<SinglePost />} />
+        <Route path='/*' element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
