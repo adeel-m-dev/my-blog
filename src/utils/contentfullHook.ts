@@ -1,12 +1,9 @@
 import { createClient } from "contentful";
 
-const spaceId = "2tk4erwmnu0p";
-const accessToken = "gBbBmQcYphkLWuVNvHKUrmuU9xBDGa-ZtgNe9addOrc";
-
 export const useContentFullHook = () => {
   const client = createClient({
-    space: spaceId,
-    accessToken,
+    space: import.meta.env.VITE_SPACE_ID,
+    accessToken: import.meta.env.VITE_ACCESS_TOKEN,
   });
 
   const getHeader = async () => {
