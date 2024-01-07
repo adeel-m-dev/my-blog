@@ -2,12 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useContentFullHook } from "../utils/contentfullHook";
 import Spinner from "./Spinner";
+import { RenderParagraph } from "./RenderContent";
 
 interface PostsType {
   featured_image: string;
   slug: string;
   title: string;
-  description: string;
+  content: any[];
   id: string;
 }
 
@@ -42,7 +43,7 @@ export default function MainPage() {
               {item.title}
             </h5>
             <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
-              {item.description.slice(0, 220) + "......."}
+              <RenderParagraph content={item.content} />
             </p>
           </div>
         </Link>
@@ -53,8 +54,19 @@ export default function MainPage() {
   if (loading) return <Spinner />;
 
   return (
-    <ul className='grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 gap-y-10 gap-x-6 items-start p-8 mt-12'>
-      {Posts}
-    </ul>
+    <>
+      <div className='mx-auto mb-[60px] max-w-[510px] text-center lg:mb-20 mt-20 top-0'>
+        <h2 className='mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px]'>
+          Our Latest Quote
+        </h2>
+        <p className='text-base text-body-color dark:text-dark-6'>
+          Do all the good you can, for all the people you can, in all the ways
+          you can, as long as you can.
+        </p>
+      </div>
+      <div className='grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 gap-y-10 gap-x-6 items-start p-8 mt-12'>
+        {Posts}
+      </div>
+    </>
   );
 }

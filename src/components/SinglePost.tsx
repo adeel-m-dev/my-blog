@@ -2,19 +2,20 @@ import { useEffect, useState } from "react";
 import { useContentFullHook } from "../utils/contentfullHook";
 import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
+import { RenderContent } from "./RenderContent";
 
 interface PostType {
   featured_image: string;
   slug: string;
   title: string;
-  description: string;
+  content: any[];
 }
 
 export default function SinglePost() {
   const { id } = useParams<{ id: string }>();
   const [post, setPost] = useState<PostType>({
     title: "",
-    description: "",
+    content: [],
     slug: "",
     featured_image: "",
   });
@@ -51,7 +52,7 @@ export default function SinglePost() {
         />
         {/* Blog post content */}
         <div className='prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto'>
-          {post.description}
+          <RenderContent content={post.content} />
         </div>
       </div>
     </div>

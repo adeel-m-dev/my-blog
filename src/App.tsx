@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import MainPage from "./components/MainPage";
 import SinglePost from "./components/SinglePost";
 import NotFound from "./components/NotFound";
+import { PrivacyPolicy } from "./components/PrivacyPolicy";
 
 function App() {
   const [theme, setTheme] = useState<string>(localStorage.getItem("theme")!);
@@ -24,15 +25,16 @@ function App() {
   };
 
   return (
-    <div className='dark:bg-gray-900 dark:text-white'>
+    <>
       <AuthNavbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
       <Routes>
         <Route path='/' element={<MainPage />} />
+        <Route path='/privacy' element={<PrivacyPolicy />} />
         <Route path='/:slug/:id' element={<SinglePost />} />
         <Route path='/*' element={<NotFound />} />
       </Routes>
       <Footer />
-    </div>
+    </>
   );
 }
 
