@@ -6,6 +6,9 @@ import MainPage from "./components/MainPage";
 import SinglePost from "./components/SinglePost";
 import NotFound from "./components/NotFound";
 import { PrivacyPolicy } from "./components/PrivacyPolicy";
+import { TermsConditions } from "./components/TermsConditions";
+import { Contact } from "./components/Contact";
+import { About } from "./components/About";
 
 function App() {
   const [theme, setTheme] = useState<string>(localStorage.getItem("theme")!);
@@ -29,6 +32,9 @@ function App() {
       <AuthNavbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
       <Routes>
         <Route path='/' element={<MainPage />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/terms' element={<TermsConditions />} />
         <Route path='/privacy' element={<PrivacyPolicy />} />
         <Route path='/:slug/:id' element={<SinglePost />} />
         <Route path='/*' element={<NotFound />} />
