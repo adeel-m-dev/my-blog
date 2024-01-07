@@ -1,6 +1,12 @@
 import { ReactElement } from "react";
 
-export default function SocialButton({ svg }: { svg: ReactElement }) {
+export default function SocialButton({
+  svg,
+  to,
+}: {
+  svg: ReactElement;
+  to: string;
+}) {
   return (
     <button
       type='button'
@@ -8,7 +14,9 @@ export default function SocialButton({ svg }: { svg: ReactElement }) {
       data-te-ripple-color='light'
       className='mr-2 bg-white inline-block rounded-full p-3 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg'
     >
-      {svg}
+      <a href={to} target='_blank'>
+        {svg}
+      </a>
     </button>
   );
 }
