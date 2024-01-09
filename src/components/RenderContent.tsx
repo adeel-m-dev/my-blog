@@ -38,7 +38,20 @@ export const RenderContent = ({ content }: { content: any[] }) => {
           </h6>
         );
       case "paragraph":
-        return <p key={index}>{node?.content?.[0]?.value}</p>;
+        return (
+          <p key={index}>
+            {node?.content?.map((item: any, itemIndex: number) => {
+              if (item.marks?.[0]?.type === "bold") {
+                return (
+                  <span key={itemIndex} className='font-bold'>
+                    {item?.value}
+                  </span>
+                );
+              }
+              return <span key={itemIndex}>{item?.value}</span>;
+            })}
+          </p>
+        );
       case "ordered-list":
         return (
           <ol
@@ -111,11 +124,20 @@ export const RenderContent = ({ content }: { content: any[] }) => {
 export const RenderParagraph = ({ content }: { content: any[] }) => {
   return content?.map(
     (node, index) =>
+      index <= 1 &&
       node?.nodeType === "paragraph" && (
-        <p key={index}>
-          {node?.content?.[0]?.value &&
-            node?.content?.[0]?.value.slice(0, 220) + "......."}
-        </p>
+        <span key={index}>
+          {node?.content?.map((item: any, itemIndex: number) => {
+            if (item.marks?.[0]?.type === "bold") {
+              return (
+                <span key={itemIndex} className='font-bold'>
+                  {item?.value}
+                </span>
+              );
+            }
+            return <span key={itemIndex}>{item?.value}</span>;
+          })}
+        </span>
       )
   );
 };
