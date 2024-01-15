@@ -9,6 +9,7 @@ interface PostType {
   slug: string;
   title: string;
   content: any[];
+  date: string;
 }
 
 export default function SinglePost() {
@@ -18,6 +19,7 @@ export default function SinglePost() {
     content: [],
     slug: "",
     featured_image: "",
+    date: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -26,7 +28,14 @@ export default function SinglePost() {
 
   useEffect(() => {
     setLoading(true);
-    getPost(id!).then((res) => {
+    getPost(id!).then((res: any) => {
+      if (res?.date) {
+        res.date = new Date(res.date).toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        });
+      }
       setPost(res as PostType);
       setLoading(false);
     });
@@ -41,14 +50,16 @@ export default function SinglePost() {
         <div className='py-8'>
           <h1 className='text-3xl font-bold mb-2'>{post.title}</h1>
           <p className='text-gray-500 text-sm'>
-            Published on <time dateTime='2022-04-05'>April 5, 2022</time>
+            Published on <time dateTime='2022-04-05'>{post.date}</time>
           </p>
         </div>
         {/* Featured image */}
         <img
           src={post.featured_image}
           alt='Featured image'
-          className='w-full h-auto mb-8'
+          className='w-auto h-auto mb-8'
+          loading='lazy'
+          rel='preload'
         />
         {/* Blog post content */}
         <div className='prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto'>

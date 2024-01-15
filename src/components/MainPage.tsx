@@ -36,7 +36,9 @@ export default function MainPage() {
           <img
             className='object-cover w-full rounded-t-lg h-[18rem] lg:w-48 lg:rounded-none lg:rounded-s-lg'
             src={item.featured_image}
-            alt=''
+            alt='nothing-to-show'
+            loading='lazy'
+            rel='preload'
           />
           <div className='p-4 leading-normal'>
             <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>

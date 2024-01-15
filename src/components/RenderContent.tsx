@@ -41,6 +41,19 @@ export const RenderContent = ({ content }: { content: any[] }) => {
         return (
           <p key={index}>
             {node?.content?.map((item: any, itemIndex: number) => {
+              if (item.nodeType === "hyperlink") {
+                return (
+                  <a
+                    href={item?.data?.uri}
+                    key={itemIndex}
+                    className='text-blue-500 underline'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    {item?.content?.[0]?.value}
+                  </a>
+                );
+              }
               if (item.marks?.[0]?.type === "bold") {
                 return (
                   <span key={itemIndex} className='font-bold'>
