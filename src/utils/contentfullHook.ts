@@ -37,6 +37,7 @@ export const useContentFullHook = () => {
           featured_image: item.fields?.featured_image?.fields?.file?.url,
           content: item.fields?.content?.content,
           id: item.sys.id,
+          date: item?.sys?.createdAt,
         };
       });
       return sanitizedResponse;
@@ -53,6 +54,7 @@ export const useContentFullHook = () => {
         slug: response?.fields?.slug,
         featured_image: response?.fields?.featured_image?.fields?.file?.url,
         content: response?.fields?.content?.content,
+        date: response?.sys?.createdAt,
       };
       return sanitizedResponse;
     } catch (error) {

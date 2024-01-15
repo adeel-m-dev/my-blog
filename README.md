@@ -21,3 +21,5 @@ bun run dev
     - `Revert[Components]: example function`
 - Each pull request should have a description of what the changes are
 - Add enough information for the reviewer to understand the changes
+
+Replace .env.example to .env and replace your contentfull ids
